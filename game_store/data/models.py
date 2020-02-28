@@ -41,6 +41,6 @@ class User_games(models.Model):
 
 
 class Image(models.Model):
-    lmage_id = models.CharField(max_length=255, primary_key=True)
+    image_id = models.CharField(max_length=255, primary_key=True)
     game_id = models.ForeignKey(Game, on_delete=models.PROTECT)
-    image_url = models.CharField(max_length=255)
+    image_url = models.ImageField(upload_to='')

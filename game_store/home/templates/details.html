@@ -1,0 +1,124 @@
+{% extends 'bese.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 ">
+                <form class="form-inline">
+                    <div class="form-group mx-sm-2 mb-2">
+                        <input type="text" class="form-control" placeholder="Search...">
+                    </div>
+
+                </form>
+            </div>
+
+
+            <div class="col-4 text-right">
+                {% if user.is_authenticated %}
+                <a type="button" class="btn btn-outline-warning col-5 ml-5" href="{% url 'mygame' %}" role="button">My
+                    Game</a>
+
+                {% endif %}
+            </div>
+        </div>
+
+
+
+
+        <!-- ตรงกลางอันเดียว -->
+        <div class="row bg-warning">
+            <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3 <br><br><br><br><br><br><br><br><br><br><br><br>
+            </div>
+        </div><br>
+        <!-- หมดตรงกลางอันเดียว -->
+        <!--  3 of 3 -->
+        <div class="container">
+            <div class="row text">
+                <div class="col ">
+                    <img class="card shadow p-2 mb-3 ml-4 bg-white rounded " style="width: 10rem; height: 14rem;"
+                        src="{% static '/img/game4.jpg' %}" alt="">
+                </div>
+                <div class="col-6 ">
+                    <div class="p-2 mb-3 my-5">
+                    </div>
+                    <div class="p-2 mb-3 my-3">
+                    </div>
+                    <div class=" mb-2 my- mr-5">
+                        <h4>Playerunknown's battlegrounds</h4>
+                        <hr>
+                    </div>
+                </div>
+                <div class="col ">
+                    <div class="p-2 mb-3 my-5">
+                    </div>
+                    <blockquote class=" text-right">
+                        <p class="mb-2">1,400 BATH</p>
+                    </blockquote>
+                    {% if user.is_authenticated %}
+                    <blockquote class="blockquote text-right">
+                        <a type="button" class="btn btn-outline-dark col-5 ml-3" href="#"
+                            role="button">BUY NOW</a>
+                    </blockquote>
+                    {% endif %}
+                </div>
+            </div><br>
+            <!-- end 3 of 3 -->
+
+            <div class="row ">
+                <div class="col ">
+                    <div class="float-left">
+                        <h4>About this game</h4>
+                    </div><br>
+
+                </div>
+                <div class="col r">
+                    <small class="" style="color: #afafaf">Developer</small>
+                    <p>test</p><br>
+                    <small class="" style="color: #afafaf">Tags</small>
+                    <p>test</p><br>
+                </div>
+                <div class="col ">
+                    <small class="" style="color: #afafaf">Publisher</small>
+                    <p>test</p><br>
+                    <small class="" style="color: #afafaf">Rating</small>
+                    <p>test</p><br>
+                </div>
+                <div class="col ">
+                    <small class="" style="color: #afafaf">Release Date</small>
+                    <p>test</p>
+                </div>
+            </div>
+            <br>
+            <div class="row ">
+                <div class="">.PlayerUnknown's Battlegrounds (PUBG) is an online multiplayer battle
+                    royale game developed and published by PUBG
+                    Corporation, a subsidiary of South Korean video game company Bluehole. The game is based on previous
+                    mods that were
+                    created by Brendan "PlayerUnknown" Greene for other games, inspired by the 2000 Japanese film Battle
+                    Royale, and
+                    expanded into a standalone game under Greene's creative direction. In the game, up to one hundred
+                    players parachute onto
+                    an island and scavenge for weapons and equipment to kill others while avoiding getting killed
+                    themselves. The available
+                    safe area of the game's map decreases in size over time, directing surviving players into tighter
+                    areas to force
+                    encounters. The last player or team standing wins the round.
+                </div>
+            </div><br><br><br>
+
+
+</body>
+
+</html>
+
+{% endblock content %}

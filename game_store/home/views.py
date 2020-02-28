@@ -3,17 +3,39 @@ from struct import error
 from urllib import request
 
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
-from data.models import User
+from data.models import Game, Image
 
 
 # Create your views here.
 def home(request):
-    return render(request, 'index.html')
+    game = Game.objects.all()
+    image = Image.objects.all()
+    print(game)
+    return render(request,
+                  'index.html',
+                  context={
+                      'games': game,
+                      'images': image
+                  })
 
 
 def signup(request):
+    if request.method == 'POST':
+        user = User.objects.create_user(
+            username=request.POST.get('username'),
+            password=request.POST.get('password'),
+            first_name=request.POST.get('first_name'),
+            last_name=request.POST.get('last_name'),
+            email=request.POST.get('email'))
+        # group = Group.objects.get(name='public')
+        # user.groups.add(group)
+        user.save()
+
+        return render(request, 'login.html')
+
     return render(request, 'signup.html')
 
 
@@ -27,7 +49,7 @@ def my_login(request):
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-            return redirect('homelogin')
+            return redirect('home_member')
         else:
 
             context['username'] = username
@@ -43,10 +65,36 @@ def my_logout(request):
 
 
 def allgame(request):
-    return render(request, 'allgame.html')
+    game = Game.objects.all()
+    image = Image.objects.all()
+    print(game)
+    return render(request,
+                  'allgame.html',
+                  context={
+                      'games': game,
+                      'images': image
+                  })
 
 
-# def homemember(request):
-#     return render(request, 'homemember.html')
-def homelogin(request):
-    return render(request, 'index.html')
+def details(request):
+    return render(request, 'details.html')
+
+
+def home_member(request):
+    game = Game.objects.all()
+    image = Image.objects.all()
+    print(game)
+    return render(request,
+                  'index.html',
+                  context={
+                      'games': game,
+                      'images': image
+                  })
+
+
+def details_member(request):
+    return render(request, 'details.html')
+
+
+def mygame(request):
+    return render(request, 'mygame.html')
